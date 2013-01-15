@@ -13,8 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.bertvanbrakel.codemucker.annotation;
+package org.codemucker.jpattern;
 
-public @interface Pattern {
-	PatternType type();
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface Generated {
+
+	/**
+	 * The sha1 hash of the generated item. Used to detect if the item has been structurally been modified
+	 * or needs updating
+	 * .
+	 * Hash should be generated from the AST tree, ignoring spaces, formatting
+	 */
+	String sha1() default "";
 }
