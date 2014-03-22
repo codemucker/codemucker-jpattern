@@ -8,9 +8,9 @@
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../codemucker-parent/pom.xml</relativePath>
 	</parent>
-	<artifactId>codemucker-annotations</artifactId>
+	<artifactId>codemucker-jpattern</artifactId>
 	<packaging>jar</packaging>
-	<name>org.codemucker - Annotations</name>
+	<name>org.codemucker - JPattern</name>
 	<description>Shared annotations</description>
 	<dependencies>
 	</dependencies>
