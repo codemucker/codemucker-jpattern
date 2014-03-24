@@ -16,5 +16,12 @@
 package org.codemucker.jpattern;
 
 public enum PatternType {
-	Builder,BuilderCreate,BuilderSetter,Getter,Setter,UNSET;
+	Builder,
+	BuilderCreate,
+	BuilderSetter,
+	Getter,
+	Setter,
+	TransferBean,
+	BeanWithBehaviour,
+	Unset;
 }

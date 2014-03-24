@@ -15,8 +15,12 @@
  */
 package org.codemucker.jpattern;
 
+/**
+ * Documents the pattern that was being followed to generate some code. This
+ * is usually only ever set by the code generator and shouldn't be modified by hand
+ */
 public @interface Pattern {
-	PatternType type() default PatternType.UNSET;
+	PatternType type() default PatternType.Unset;
 	String name() default "";
 	
 }
