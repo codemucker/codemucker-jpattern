@@ -1,4 +1,4 @@
-package org.codemucker.jpattern;
+package org.codemucker.jpattern.bean;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

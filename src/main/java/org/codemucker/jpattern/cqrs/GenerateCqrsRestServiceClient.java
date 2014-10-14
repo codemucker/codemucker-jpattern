@@ -13,37 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.codemucker.jpattern;
+package org.codemucker.jpattern.cqrs;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-/**
- * Marks a class as having been generated. This usually indicates the class
- * should not be modified by hand
- */
+
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Target({ElementType.TYPE,ElementType.METHOD,ElementType.FIELD,ElementType.CONSTRUCTOR})
-public @interface IsGenerated {
+@Target(ElementType.TYPE)
+public @interface GenerateCqrsRestServiceClient {
+    boolean keepInSync() default true;
+    boolean generateAsync() default true;
+    boolean generateSync() default true;
+    boolean generateInterface() default true;
+    
+    String methodVisibility() default "public";
+    String[] packages() default {};
+    String[] matchBeans() default {};
+    Dependency[] matchDependencies() default {};
 
-	/**
-	 * The sha1 hash of the generated item. Used to detect if the item has been structurally been modified
-	 * or needs updating
-	 * .
-	 * Hash should be generated from the AST tree, ignoring spaces, formatting
-	 */
-	String sha1() default "";
-	
-	/**
-	 * Name of the generator used
-	 */
-	String generator();
-	
-	/**
-	 * Version of the generator
-	 */
-	String version() default "";    
+    public @interface Dependency {
+        String group();
+        String artifact() default "";
+    }
 }

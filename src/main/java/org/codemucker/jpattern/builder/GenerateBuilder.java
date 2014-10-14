@@ -1,4 +1,4 @@
-package org.codemucker.jpattern;
+package org.codemucker.jpattern.builder;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -11,6 +11,13 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface GenerateBuilder {
 
-	boolean ctor() default true;
-	String name() default "";
+    boolean generateNoArgCtor() default true;
+    boolean generateAllArgCtor() default true;
+    
+    String builderClassName() default "";
+    String builderMethodName() default "with";
+    
+    String buildMethodName() default "build";
+    
+    
 }
