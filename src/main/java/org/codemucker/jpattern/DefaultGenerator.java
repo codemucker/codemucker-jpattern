@@ -13,33 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.codemucker.jpattern.cqrs;
+package org.codemucker.jpattern;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import org.codemucker.jpattern.DefaultGenerator;
-
+/**
+ * The classname of the default generator to use to generate a given pattern. Should only be set on the generation annotation
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Target(ElementType.TYPE)
-@DefaultGenerator("org.codemucker.jmutate.generate.GeneratorCqrsRestServiceServer")
-public @interface GenerateCqrsRestServiceServer {
-    boolean keepInSync() default true;
-    boolean generateAsync() default true;
-    boolean generateSync() default true;
-    boolean generateInterface() default true;
-    
-    String methodVisibility() default "public";
-    String[] packages() default {};
-    String[] matchBeans() default {};
-    Dependency[] matchDependencies() default {};
+@Target({ElementType.ANNOTATION_TYPE})
+public @interface DefaultGenerator {
 
-    public @interface Dependency {
-        String group();
-        String artifact() default "";
-    }
+	/**
+	 * Name of the generator used
+	 */
+	String value();
+
 }

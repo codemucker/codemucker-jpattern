@@ -21,19 +21,62 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.codemucker.jpattern.DefaultGenerator;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
+@DefaultGenerator("org.codemucker.jmutate.generate.GeneratorCqrsRestServiceClient")
 public @interface GenerateCqrsRestServiceClient {
+
+    /**
+     * If enabled keep this pattern in sync with changes after the initial
+     * generation. Defaults to true.
+     */
     boolean keepInSync() default true;
+
+    /**
+     * Generate the asynchronous request methods. Defaults to true.
+     */
     boolean generateAsync() default true;
+
+    /**
+     * Generate the synchronous request methods. Defaults to true;
+     */
     boolean generateSync() default true;
+
+    /**
+     * Whether to generate a matching interface for this service.. Defaults to
+     * true.
+     */
     boolean generateInterface() default true;
-    
-    String methodVisibility() default "public";
-    String[] packages() default {};
-    String[] matchBeans() default {};
-    Dependency[] matchDependencies() default {};
+
+    /**
+     * If interface generation is enabled, the name of the interface. If not set
+     * calculates one. Default is empty.
+     */
+    String serviceInterfaceName() default "";
+
+    /**
+     * The visibility of the the request conversion methods. . Defaults to
+     * 'public'.
+     */
+    String serviceMethodVisibility() default "public";
+
+    /**
+     * If set filter the dependencies scanned for request beans
+     */
+    Dependency[] requestBeanDependencies() default {};
+
+    /**
+     * The packages to search in for the request beans. Defaults to search all.
+     */
+    String[] requestBeanPackages() default {};
+
+    /**
+     * The pattern for finding the request command/query beans
+     */
+    String[] requestBeanNames() default {};
 
     public @interface Dependency {
         String group();
