@@ -22,6 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.codemucker.jpattern.DefaultGenerator;
+import org.codemucker.jpattern.Dependency;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -37,9 +38,4 @@ public @interface GenerateCqrsRestServiceServer {
     String[] packages() default {};
     String[] matchBeans() default {};
     Dependency[] matchDependencies() default {};
-
-    public @interface Dependency {
-        String group();
-        String artifact() default "";
-    }
 }
