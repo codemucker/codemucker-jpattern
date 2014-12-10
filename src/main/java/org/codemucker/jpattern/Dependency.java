@@ -15,4 +15,6 @@ import java.lang.annotation.Target;
 public @interface Dependency {
     String group();
     String artifact() default "";
+    String classifier() default "";
+    String extension() default "";
 }
