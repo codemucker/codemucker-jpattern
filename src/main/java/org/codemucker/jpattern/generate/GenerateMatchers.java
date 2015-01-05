@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 @Documented
 @Target(ElementType.TYPE)
 @GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.matcher.MatcherGenerator")
-public @interface GeneratorMatchers {
+public @interface GenerateMatchers {
 
     /**
      * If enabled keep this pattern in sync with changes after the initial
@@ -56,14 +56,47 @@ public @interface GeneratorMatchers {
     String[] builderMethodNames() default {};
 
     /**
-     * If set filter the dependencies scanned for pojos
+     * If expression set filter the dependencies scanned for pojos. Default is empty meaning all dependencies.
+     * 
+     * <p>Format is groupId:artifactId:classifier:extension where any part can be empty/* (the same), or the last ones omitted.
+     * </p>
+     * 
+     * <p>E.g.
+     * 
+     * <ul>
+     * 	<li>mycompany:myartifact:sources:jar
+     * 	<li>mycompany::sources:jar
+     * 	<li>mycompany:myartifact
+     * 	<li>mycompany:*:*:jar
+     *  <li>mycompany:*
+     *  <li>mycompany
+     *  <li>(mycompany:myartifact || othercompany:*) && !(*:*:sources)
+     *  
+     * </ul>
+     * </p>
+     * 
+     * @see {@link org.codemucker.jmatch.expression.ExpressionParser} and {@link org.codemucker.jfind.matcher.ARoot#dependenciesExpression}
      */
     String pojoDependencies() default "";
 
+    /**
+     * The expression for matching the types found. Matches the no arg builder method names on  {@link org.codemucker.jmutate.ast.matcher.AJType}
+     * 
+     * @see {@link org.codemucker.jmatch.expression.ExpressionParser} and {@link org.codemucker.jmutate.ast.matcher.AJType}
+     * @return
+     */
     String pojoTypes() default "PublicConcreteClass";
     
     /**
-     * The pattern for finding the pojos. By default matches everything (in the packages and dependencies set to be scanned). Logical ant expression pattern matching.
+     * The expression for matching the pojos. By default matches everything (in the packages and dependencies set to be scanned) except for system classes. Logical ant expression pattern matching.
+     *
+     *<p>E.g.
+     * 
+     * <ul>
+     * 	<li>(com.acme.* || com.other.model.*) && !(*Abstract* || *Base*)
+     * </ul>
+     * 
+     * @see {@link org.codemucker.jmatch.expression.ExpressionParser} and {@link org.codemucker.jmatch.AString.matchingAnyAntPattern}
      */
     String pojoNames() default "!(java.* || javax.* || *Abstract*)";
     
