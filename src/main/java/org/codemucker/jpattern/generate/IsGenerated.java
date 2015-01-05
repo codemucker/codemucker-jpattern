@@ -40,5 +40,5 @@ public @interface IsGenerated {
 	/**
 	 * Name of the generator used
 	 */
-	String generator();
+	String by();
 }
