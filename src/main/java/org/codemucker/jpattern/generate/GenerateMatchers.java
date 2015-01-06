@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
-@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.matcher.MatcherGenerator")
+@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.matcher.Generator")
 public @interface GenerateMatchers {
 
     /**
