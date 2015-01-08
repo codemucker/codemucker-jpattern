@@ -8,9 +8,13 @@ import java.lang.annotation.Target;
 
 /**
  * Marking an annotation with this marks it as being a template
- * for generation. So any call marked with your custom template annotation
+ * for generation. So any class/method/param marked with your custom template annotation
  * will inherit the templates generator annotations
  * 
+ * <p>The template annotation source can be in the same project as the sources being 
+ * generated as it will be compiled as part of the generation process</p>
+ * 
+ * <p>NOTE: REMEMBER to mark your annotation as having retention runtime!</p>
  * E.g
  * 
  * <p>
