@@ -32,5 +32,4 @@ public @interface GeneratorOptions {
 	 * Name of the generator used
 	 */
 	String defaultGenerator();
-
 }

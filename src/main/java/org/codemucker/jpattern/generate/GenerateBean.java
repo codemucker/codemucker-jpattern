@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
-@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.bean.Generator")
+@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.bean.BeanGenerator")
 public @interface GenerateBean {
 
 	boolean markGenerated() default true;
@@ -18,6 +18,8 @@ public @interface GenerateBean {
 
 	boolean generateAllArgCtor() default true;
 
+	boolean generateToString() default true;
+	
 	/**y
 	 * If true generate a 'validate' method. This will use the hibernate
 	 * validation bindings

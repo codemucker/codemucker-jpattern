@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
-@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.builder.Generator")
+@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.builder.BuilderGenerator")
 public @interface GenerateBuilder {
 
     /**
