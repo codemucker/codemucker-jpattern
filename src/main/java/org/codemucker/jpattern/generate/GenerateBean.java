@@ -15,8 +15,7 @@ public @interface GenerateBean {
 	boolean markGenerated() default true;
 	
 	boolean generateNoArgCtor() default true;
-
-	boolean generateAllArgCtor() default true;
+	boolean generateCloneMethod() default false;
 
 	boolean generateToString() default true;
 	
@@ -40,6 +39,13 @@ public @interface GenerateBean {
 	 * If true, then generate public static finalString fields of all the property names. Helpful if needing to perform reflection, fire events etc. 
 	 */
 	boolean generateStaticPropertyNameFields() default false;
+	
+	/**
+	 * If true then add add/remove methods for indexed properties (like lists/maps)
+	 * @return
+	 */
+	boolean generateAddRemoveMethodsForIndexProperties() default true;
+	
 	
 	String abstractSuperPrefix() default "Abstract";
 

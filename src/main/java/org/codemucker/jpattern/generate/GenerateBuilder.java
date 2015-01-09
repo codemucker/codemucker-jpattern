@@ -61,6 +61,7 @@ public @interface GenerateBuilder {
     
     String buildMethodName() default "build";
     
+    boolean generateStaticBuilderMethod() default true;
 	/**
 	 * If true then the builder will cache properties before creating the bean. Else sets
 	 * on bean directly
