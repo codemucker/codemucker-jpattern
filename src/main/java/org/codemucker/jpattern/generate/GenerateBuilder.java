@@ -55,16 +55,23 @@ public @interface GenerateBuilder {
      * 
      * @return
      */
-    String[] builderMethodNames() default {};
+    String[] builderCreateMethodNames() default { "with" };
 
     String builderClassName() default "";
     
     String buildMethodName() default "build";
     
-    boolean generateStaticBuilderMethod() default true;
+    /**
+     * If true generate the static builder create method 'with()' (or custom names if set via {@link #builderCreateMethodNames()}
+     * 
+     * Default is true
+     */
+    boolean generateStaticBuilderCreateMethod() default true;
 	/**
 	 * If true then the builder will cache properties before creating the bean. Else sets
-	 * on bean directly
+	 * on bean directly.
+	 * 
+	 * Default is true
 	 */
     boolean collectProperties() default true;
 }
