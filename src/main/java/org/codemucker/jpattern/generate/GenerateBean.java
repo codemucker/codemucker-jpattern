@@ -6,6 +6,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.codemucker.jpattern.bean.Property;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
@@ -13,8 +15,19 @@ import java.lang.annotation.Target;
 public @interface GenerateBean {
 
 	boolean markGenerated() default true;
+	/**
+	 * If true, ctor property args are also marked with a {@link Property}
+	 * @return
+	 */
+	boolean markCtorArgsAsProperties() default true;
 	
 	boolean generateNoArgCtor() default true;
+	
+	/**
+	 * If true generate a constructor with all the bean properties
+	 */
+	boolean generateAllArgCtor() default false;
+	
 	boolean generateCloneMethod() default false;
 
 	boolean generateToString() default true;
@@ -36,6 +49,14 @@ public @interface GenerateBean {
 	boolean generateAbstractSuperClass() default true;
 	
 	/**
+	 * If true inherit super class properties. Default false
+	 * 
+	 * TODO
+	 */
+	//TODO
+	boolean inheritSuperClassProperties() default false;
+	
+	/**
 	 * If true, then generate public static finalString fields of all the property names. Helpful if needing to perform reflection, fire events etc. 
 	 */
 	boolean generateStaticPropertyNameFields() default false;
@@ -46,19 +67,19 @@ public @interface GenerateBean {
 	 */
 	boolean generateAddRemoveMethodsForIndexProperties() default true;
 	
-	
-	String abstractSuperPrefix() default "Abstract";
-
 	boolean readonlyProperties() default false;
 	/**
 	 * The fields to match. Default is empty which means all
 	 */
 	String fieldNames() default "";
 
+	/**
+	 * What access level to force fields to. Default is private
+	 */
 	Access fieldAccess() default Access.PRIVATE;
 
 	/**
-	 * If true then fire when  properties are set
+	 * If true then fire property change events when  properties are set
 	 */
 	boolean bindable() default false;
 	

@@ -28,5 +28,5 @@ import java.lang.annotation.Target;
 @Documented
 @Target({ElementType.FIELD,ElementType.METHOD,ElementType.PARAMETER})
 public @interface Property {
-	String name() default "";
+	String value() default "";
 }

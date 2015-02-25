@@ -13,32 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.codemucker.jpattern.generate;
+package org.codemucker.jpattern.bean;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
 /**
- * Marks a class, method,field as having been generated. This usually indicates the class
- * should not be modified by hand
+ * Marks a field or method as _not_ being part of a property. Useful to tell generators
+ * to ignore them
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Target({ElementType.TYPE,ElementType.METHOD,ElementType.FIELD,ElementType.CONSTRUCTOR})
-public @interface IsGenerated {
-
-	/**
-	 * The sha1 hash of the generated item. Used to detect if the item has been structurally been modified
-	 * or needs updating
-	 * .
-	 * Hash should be generated from the AST tree, ignoring spaces, formatting
-	 */
-	String sha1() default "";
-	
-	/**
-	 * Name of the generator used
-	 */
-	String by();
+@Target({ElementType.FIELD,ElementType.METHOD,ElementType.PARAMETER})
+public @interface NotAProperty {
 }

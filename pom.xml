@@ -8,12 +8,8 @@
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../codemucker-parent/pom.xml</relativePath>
 	</parent>
-	<properties>
-		<java.src.version>1.7</java.src.version>
-		<java.target.version>1.7</java.target.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	<artifactId>codemucker-jpattern</artifactId>
+	
+    <artifactId>codemucker-jpattern</artifactId>
 	<packaging>jar</packaging>
 	<name>org.codemucker - JPattern</name>
 	<description>Shared annotations</description>

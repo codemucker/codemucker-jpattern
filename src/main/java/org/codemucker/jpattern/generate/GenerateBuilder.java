@@ -21,6 +21,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.codemucker.jpattern.bean.Property;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
@@ -34,7 +36,12 @@ public @interface GenerateBuilder {
     boolean keepInSync() default true;
     
     boolean markGenerated() default true;
-
+    /**
+	 * If true, ctor property args are also marked with a {@link Property}
+	 * @return
+	 */
+	boolean markCtorArgsAsProperties() default true;
+	
     /**
      * The fields to match. Default is empty which means all
      */
@@ -61,12 +68,44 @@ public @interface GenerateBuilder {
     
     String buildMethodName() default "build";
     
+    public static enum Inherit {
+    	PROPERTIES,BUILDER,BUILDER_ELSE_PROPERTIES,NONE,AUTO;
+    }
     /**
      * If true generate the static builder create method 'with()' (or custom names if set via {@link #builderCreateMethodNames()}
      * 
      * Default is true
      */
     boolean generateStaticBuilderCreateMethod() default true;
+    
+    /**
+     * If true create a static 'with()' on the builder (useful if super beans already have 'with' ctor methods)
+     * @return
+     */
+    boolean generateStaticBuilderCreateMethodOnBuilder() default true;
+	
+    /**
+	 * If true then add add/remove methods for indexed properties (like lists/maps)
+	 * @return
+	 */
+	boolean generateAddRemoveMethodsForIndexProperties() default true;
+	
+	/**
+	 * If true generate a from(bean) method on the builder
+	 * 
+	 * Default true
+	 */
+	boolean generateCreateFromBean() default true;
+	
+	public boolean inheritSuperBeanBuilder() default false;
+	public boolean inheritSuperBeanProperties() default true;
+	
+	/**
+	 * If true, then allow sub class builders. All build methods will return a TSelf instead of the builder concrete class
+	 * @return
+	 */
+	public boolean supportSubclassing() default false;
+	
 	/**
 	 * If true then the builder will cache properties before creating the bean. Else sets
 	 * on bean directly.
