@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
-@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.matcher.MatcherGenerator")
+@IsGeneratorConfig(defaultGenerator="org.codemucker.jmutate.generate.matcher.MatcherGenerator")
 public @interface GenerateMatchers {
 
     /**
@@ -33,6 +33,10 @@ public @interface GenerateMatchers {
      */
     boolean keepInSync() default true;
     
+	boolean enabled() default true;
+
+	boolean inheritParentProperties() default true;
+
     boolean markGenerated() default true;
     /**
      * The package to generate the matchers in. If empty use the same package as the pojo one
@@ -86,6 +90,12 @@ public @interface GenerateMatchers {
      * @return
      */
     String pojoTypes() default "PublicConcreteClass";
+    
+    /**
+     * Proeperty names to generate matchers for. Default empty which means all
+     * @return
+     */
+    String fieldNames() default "";
     
     /**
      * The expression for matching the pojos. By default matches everything (in the packages and dependencies set to be scanned) except for system classes. Logical ant expression pattern matching.

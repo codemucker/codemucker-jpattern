@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
-@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.GeneratorCqrsRestServiceServer")
+@IsGeneratorConfig(defaultGenerator="org.codemucker.jmutate.generate.GeneratorCqrsRestServiceServer")
 public @interface GenerateCqrsRestServiceServer {
     boolean keepInSync() default true;
     boolean generateAsync() default true;

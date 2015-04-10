@@ -26,7 +26,7 @@ import org.codemucker.jpattern.bean.Property;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
-@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.builder.BuilderGenerator")
+@IsGeneratorConfig(defaultGenerator="org.codemucker.jmutate.generate.builder.BuilderGenerator")
 public @interface GenerateBuilder {
 
     /**
@@ -35,6 +35,8 @@ public @interface GenerateBuilder {
      */
     boolean keepInSync() default true;
     
+	boolean enabled() default true;
+
     boolean markGenerated() default true;
     /**
 	 * If true, ctor property args are also marked with a {@link Property}
@@ -98,7 +100,7 @@ public @interface GenerateBuilder {
 	boolean generateCreateFromBean() default true;
 	
 	public boolean inheritSuperBeanBuilder() default false;
-	public boolean inheritSuperBeanProperties() default true;
+	public boolean inheritParentProperties() default true;
 	
 	/**
 	 * If true, then allow sub class builders. All build methods will return a TSelf instead of the builder concrete class

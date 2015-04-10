@@ -11,10 +11,13 @@ import org.codemucker.jpattern.bean.Property;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
-@GeneratorOptions(defaultGenerator="org.codemucker.jmutate.generate.bean.BeanGenerator")
+@IsGeneratorConfig(defaultGenerator="org.codemucker.jmutate.generate.bean.BeanGenerator")
 public @interface GenerateBean {
 
 	boolean markGenerated() default true;
+	
+	boolean enabled() default true;
+
 	/**
 	 * If true, ctor property args are also marked with a {@link Property}
 	 * @return
@@ -43,6 +46,8 @@ public @interface GenerateBean {
 	 * If true then generate a bean copy method
 	 */
 	boolean generateBeanCopyMethod() default false;
+	String cloneMethodName() default "instanceOf";
+	
 	
 	boolean generateHashCodeAndEqualsMethod() default true;
 	
@@ -54,7 +59,7 @@ public @interface GenerateBean {
 	 * TODO
 	 */
 	//TODO
-	boolean inheritSuperClassProperties() default false;
+	boolean inheritParentProperties() default false;
 	
 	/**
 	 * If true, then generate public static finalString fields of all the property names. Helpful if needing to perform reflection, fire events etc. 

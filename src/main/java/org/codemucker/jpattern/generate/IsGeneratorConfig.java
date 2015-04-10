@@ -26,7 +26,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target({ElementType.ANNOTATION_TYPE})
-public @interface GeneratorOptions {
+public @interface IsGeneratorConfig {
 
 	/**
 	 * Name of the generator used
