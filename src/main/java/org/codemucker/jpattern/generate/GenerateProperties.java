@@ -94,6 +94,11 @@ public @interface GenerateProperties {
 	boolean generateAddRemoveMethods() default true;
 
 	/**
+	 * If true, then make all fields final. Default false;
+	 * @return
+	 */
+	boolean makeFinal() default false;
+	/**
 	 * If false then don't generate getters for fields. Default is true
 	 * @return
 	 */
