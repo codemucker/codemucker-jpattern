@@ -31,4 +31,11 @@ public @interface GenerateToString {
      */
     ClashStrategy clashStrategy() default ClashStrategy.SKIP;
     
+    /**
+     * If true, also add a 'ToString(StringBuilder sb) method which prints just the properties
+     * 
+     * @return
+     */
+    boolean generateStringBuilderToString() default true;
+    
 }
