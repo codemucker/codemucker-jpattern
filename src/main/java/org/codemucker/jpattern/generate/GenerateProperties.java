@@ -42,6 +42,18 @@ public @interface GenerateProperties {
 	boolean chainedSetters() default false;
 	
 	/**
+	 * Copy non value type property values on set. Default is true.
+	 * @return
+	 */
+	boolean copyOnSet() default true;
+	
+	/**
+	 * Copy non value property values on get. Default is true.
+	 * @return
+	 */
+	boolean copyOnGet() default true;
+	
+	/**
 	 * Setter method prefix to use. Default is 'set'
 	 * 
 	 * <p>Set to empty or null if just the property name should be used, as in:
