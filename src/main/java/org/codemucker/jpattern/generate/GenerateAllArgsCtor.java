@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Target(ElementType.TYPE)
-@IsGeneratorConfig(defaultGenerator="org.codemucker.jmutate.generate.bean.AllArgsConstructorGenerator")
+@IsGeneratorConfig(defaultGenerator="org.codemucker.jmutate.generate.bean.AllArgConstructorGenerator")
 public @interface GenerateAllArgsCtor {
 
 	boolean markGenerated() default true;
