@@ -8,11 +8,14 @@
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../codemucker-parent/pom.xml</relativePath>
 	</parent>
-	
-    <artifactId>codemucker-jpattern</artifactId>
+
+	<artifactId>codemucker-jpattern</artifactId>
 	<packaging>jar</packaging>
 	<name>org.codemucker - JPattern</name>
 	<description>Shared annotations</description>
+	<scm>
+		<developerConnection>scm:git:git@github.com/codemucker/codemucker-jpattern.git</developerConnection>
+	</scm>
 	<dependencies>
 	</dependencies>
 </project>
